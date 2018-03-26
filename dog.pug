@@ -1,0 +1,182 @@
+doctype html
+html(lang='en')
+  head
+    title PartyZone! Productions
+    // Required meta tags
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    // Bootstrap CSS
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css', integrity='sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M', crossorigin='anonymous')
+    link(rel='stylesheet', href='CSS/custom.css')
+  body#body(data-spy='scroll', data-target='.navbar', data-offset='100')
+    // This is where the navbar starts.
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.fixed-top
+      #NavBar.container
+        a.navbar-brand.order-1.mr-0.text-warning(href='http://www.pzpentertainment.com', target='_blank') Reimagined By Party Zone! Productions
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        #navbarNav.collapse.navbar-collapse
+          ul.navbar-nav
+            li.nav-item
+              a#homebutton.nav-link(href='#my-jumbotron')
+                | Home 
+                span.sr-only (current)
+            li.nav-item
+              a#aboutbutton.nav-link(href='#about') About
+            li.nav-item
+              a#crewbutton.nav-link(href='#crew') Crew
+            li.nav-item
+              a#schedulebutton.schedule.nav-link(href='#schedule') Schedule
+    // this is where the navbar ends.
+    // This is where the main PartyZone! Logo will go
+    .jumbotron.jumbotron-fluid.bg-info.text-white
+      #my-jumbotron.container.text-sm-center.pt-5
+        h1.display-1.text-warning PartyZone! Productions
+        p.lead.text-warning Weddings & Coperate Events Should be fun!
+        .btn-group.mt-4(role='group', aria-label='Callout Buttons')
+          button.btn.btn-warning.btn-lg(type='button', data-toggle='modal', data-target='#register') Registar Now
+          a.schedule.btn.btn-light.btn-lg.text-white(href='#schedule') See Dates
+    // Jumbotron ends
+    .container.pt-4
+      // about
+      #about.row
+        .col-lg.order-lg-2
+          h3.mb-4 About PartyZone!
+          img.mb-4.img-fluid.rounded.d-none.d-sm-block(src='img/Over View of Party Zone.png', alt='About PartyZone')
+        .col-lg.order-lg-1
+          h3.mb-4 We do all sorts of events from...
+          img.mb-4.img-fluid.rounded.d-none.d-sm-block(src='img/Weddings.png', alt='Wedding Receptions')
+        .col-lg.order-lg-3
+          h3.mb-4 and we also do!
+          img.mb-4.img-fluid.rounded.d-none.d-sm-block(src='img/Coperate.png', alt='Coperate Events')
+    // /about
+    // PartyZone! Crew & assistants!
+    h1#crew.display-4.text-center.my-5.text-muted Our Crew!
+    .row
+      .col-md-6.col-lg-4
+        .card.mb-3
+          img.card-img-top(id='Cory Leonardo', src='img/coryLeonardo.jpeg', alt='Cory Leonardo')
+          .card-body
+            h4.card-title Cory Leonardo
+            p.card-text  Owner & DJ
+      .col-md-6.col-lg-4
+        .card.mb-3
+          img.card-img-top(src='img/freddieCowgill.jpeg', alt='Card image cap')
+          .card-body
+            h4.card-title Freddie Cowgill
+            p.card-text DJ/ DJ Assistant & Warehouse Crew
+      .col-md-6.col-lg-4
+        .card.mb-3
+          img.card-img-top(src='img/jasonHeil.jpeg', alt='Jason Heil')
+          .card-body
+            h4.card-title Jason Heil
+            p.card-text DJ/ DJ Assistant.
+      .col-md-6.col-lg-12
+        // end of DJs and Crew Slot
+        // Make an appointment with us! :)
+        h1#schedule.display-4.text-center.my-5.text-muted Schedule a time to see us!
+        p.text-center
+          | We are open Monday-Friday, and are generally flexible with any scheudle. Call now to make an appointment!
+        // This is where the appointment info slot ends.
+        // Here is where future brides or grooms will click to registar
+        button#registar.btn.btn-outline-dark.button-lg.d-block.mx-auto.my-5(type='button', data-toggle='modal', data-target='#register') Don't Miss Out, Registar Now!
+        // This is where the registar button ends
+        // Form where people will fill out there information to either book an appoinment or save the date!
+        hr
+        .col-md.col-xl-5.ml-auto
+          p#schedule
+            strong Stay up-to-date with all things going on at PartyZone! Productions
+          .input-group
+            input.form-control(type='text', placeholder='Email')
+            span.input-group-btn
+              button.btn.btn-warning(type='button') Sign up for our news letter
+      hr
+      // This is where the sign up form ends.
+      // Footer
+      .col-md-6.col-lg-12
+        .row.py-3
+          .col-md-7
+            ul.nav
+              li.nav-item
+                a.nav-link(href='http://www.louisvilleweddingshows.net/home.html') Louisville Wedding Network
+              li.nav-item
+                a.nav-link(href='#') Event Locations
+              li.nav-item
+          .col-md.text-md-right
+            small © 2017 PartyZone Productions
+        // /Footer
+      // /.container
+      //
+        =====================================
+        FORM MODAL
+        =====================================
+      // Modal
+      #register.modal.fade(tabindex='-1', role='dialog', aria-labelledby='register form', aria-hidden='true')
+        .modal-dialog(role='document')
+          .modal-content
+            .modal-header.bg-dark.text-white
+              h5#exampleModalLabel.modal-title Save the Date
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+            .modal-body
+              // Registration Form
+              form
+                .alert.alert-warning.alert-dismissible.fade.show(role='alert')
+                  strong Hurry!
+                  |  Book online now and get a free Custom First Dance!
+                  button.close(type='button', data-dismiss='alert', aria-label='Close')
+                    span(aria-hidden='true') ×
+                h5.mb-4 Baisc Info
+                .form-group
+                  label.col-form-label(for='name') Name:
+                  input#name.form-control(type='text')
+                .form-group
+                  label.col-form-label(for='email') Email:
+                  input#email.form-control(type='email')
+                .form-group
+                  label.col-form-label(for='job') Event Type:
+                  select#role.custome-select.form-control
+                    option(value='full stack js developer') Wedding
+                    option(value='front end developer') Wedding & Reception
+                    option(value='back end developer') Equipment Rental
+                    option(value='designer') Coperate Event
+                    option(value='student') Other
+                hr.mb-4
+                button.btn.btn-warning.btn-lg(type='submit') Register
+              // /Registration Form
+        // Optional JavaScript
+        // jQuery first, then Popper.js, then Bootstrap JS
+        script(src='https://code.jquery.com/jquery-3.2.1.min.js', integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN', crossorigin='anonymous')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js', integrity='sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4', crossorigin='anonymous')
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js', integrity='sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1', crossorigin='anonymous')
+        script.
+          $("#homebutton").click(function() {
+          console.log("click");
+          $('html, body').animate({
+          scrollTop: $("#my-jumbotron").offset().top
+          }, 2000);
+          });
+          $("#aboutbutton").click(function() {
+          console.log("click");
+          $('html, body').animate({
+          scrollTop: $("#about").offset().top
+          }, 2000);
+          });
+          $("#crewbutton").click(function() {
+          console.log("click");
+          $('html, body').animate({
+          scrollTop: $("#crew").offset().top
+          }, 2000);
+          });
+          $("#schedulebutton").click(function() {
+          console.log("click");
+          $('html, body').animate({
+          scrollTop: $("#schedule").offset().top
+          }, 2000);
+          });
+          $(".schedule").click(function() {
+          console.log("click");
+          $('html, body').animate({
+          scrollTop: $("#schedule").offset().top
+          }, 2000);
+          });

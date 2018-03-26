@@ -1,0 +1,40 @@
+
+.navbar{
+  background-color: rgb(86, 61, 124)!important;
+}
+
+
+.navbar .navbar-brand {
+  color: #563d7c;
+  font-size: 1rem;
+
+}
+
+.jumbotron {
+background-color: rgb(119, 1, 254)!important;
+
+}
+.coryLeonardo {
+  max-width: 146px;
+  max-height: 267px;
+}
+
+.schedule {
+  background-color: rgb(86, 61, 124)!important;
+}
+
+#homebutton{
+  background-color: rgb(86, 61, 124);
+}
+
+#aboutbutton{
+  background-color: rgb(86, 61, 124);
+}
+
+#crewbutton{
+  background-color: rgb(86, 61, 124);
+}
+
+#schedulebutton{
+  background-color: rgb(86, 61, 124);
+}

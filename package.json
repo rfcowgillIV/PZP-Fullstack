@@ -1,0 +1,21 @@
+{
+  "name": "install",
+  "version": "1.0.0",
+  "description": "This is the first install for the server for my back end code louisville project",
+  "main": "app.js",
+  "scripts": {
+    "test": "Hello World!"
+  },
+  "repository": {
+    "type": "git",
+    "url": "PZPRevamp3.0"
+  },
+  "keywords": [
+    "PartyZone"
+  ],
+  "author": "Freddie Cowgill IV",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
