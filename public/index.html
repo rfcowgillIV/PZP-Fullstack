@@ -1,70 +1,335 @@
-<!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <title>PartyZone! Productions</title>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <title>Our Glorious Node Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/custom.css">
+
+
+
 </head>
 
-<body>
+<body id="body" data-spy="scroll" data-target=".navbar" data-offset="100">
+    <!-- This is where the navbar starts.  -->
 
-    <div class="container">
-        <h1>A wild webpage appears...</h1>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
 
 
-        <div id="list-container"></div>
+
+
+        <div id="NavBar" class="container">
+            <a class="navbar-brand order-1 mr-0 text-warning" href="http://www.pzpentertainment.com" target="_blank">Reimagined By Party Zone! Productions</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a id="homebutton" class="nav-link" href="#my-jumbotron">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="aboutbutton" class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="crewbutton" class="nav-link" href="#crew">Crew</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="schedulebutton" class="schedule nav-link" href="#schedule">Schedule</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="eventPicturesbutton" class="nav-link" href="#eventPictures">Event Pictures</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- this is where the navbar ends.  -->
+
+    <!-- This is where the main PartyZone! Logo will go  -->
+
+    <div class="jumbotron jumbotron-fluid bg-info text-white">
+        <div id="my-jumbotron" class="container text-sm-center pt-5">
+            <h1 class="display-1 text-warning">PartyZone! Productions</h1>
+            <p class="lead text-warning">Weddings & Coperate Events Should be fun!</p>
+
+
+            <div class="btn-group mt-4" role="group" aria-label="Callout Buttons">
+                <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#register">Registar Now</button>
+                <a class="schedule btn btn-light btn-lg text-white" href="#schedule">See Dates</a>
+
+            </div>
+        </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.8/handlebars.min.js"></script>
+    <!-- Jumbotron ends  -->
 
-    <script>
-        $(document).ready(function() {
-            const data = {
-                name: "Code Louisvillains"
-            }
-            const greetingTemplate = 'Hello {{name}}! I am a template!';
-            const greetingCompiled = Handlebars.compile(greetingTemplate);
-            const greetingRendered = greetingCompiled(data);
+    <div class="container pt-4">
+        <!-- about  -->
+        <div id="about" class="row">
+            <div class="col-lg order-lg-2">
+                <h3 class="mb-4">About PartyZone!</h3>
+                <img class="mb-4 img-fluid rounded d-none d-sm-block" src="img/Over View of Party Zone.png" alt="About PartyZone">
+            </div>
+            <div class="col-lg order-lg-1">
+                <h3 class="mb-4">We do all sorts of events from...</h3>
+                <img class="mb-4 img-fluid rounded d-none d-sm-block" src="img/Weddings.png" alt="Wedding Receptions">
 
-            $('body h1').first().after(greetingRendered);
-        });
-    </script>
+            </div>
+            <div class="col-lg order-lg-3">
+                <h3 class="mb-4">and we also do!</h3>
+                <img class="mb-4 img-fluid rounded d-none d-sm-block" src="img/Coperate.png" alt="Coperate Events">
 
-    <script>
-        $(document).ready(function() {
-            const data = {
-                list: [{
-                    name: 'Buffy',
-                    value: 'Slayer, guidance counselor'
-                }, {
-                    name: 'Willow',
-                    value: 'Witch'
-                }, {
-                    name: 'Xander',
-                    value: 'Dude, construction worker'
-                }, {
-                    name: 'Giles',
-                    value: 'Watcher, Librarian'
-                }, ],
-            };
-            const template = $('#list-template').html();
-            const compiled = Handlebars.compile(template);
-            $('#list-container').html(compiled(data));
-        });
-    </script>
-
-    <script id="list-template" type="text/x-handlebars-template">
-        {{#each list}}
-        <div class="row">
-            <div class="col-xs-6"><strong>{{name}}</strong></div>
-            <div class="col-xs-6">{{value}}</div>
+            </div>
         </div>
-        {{/each}}
-    </script>
+    </div>
+    <!-- /about  -->
 
+    <!-- PartyZone! Crew & assistants!  -->
+
+    <h1 id="crew" class="display-4 text-center my-5 text-muted">Our Crew!</h1>
+    <div class="row">
+        <div class="col-md-6 col-lg-4">
+
+
+            <div class="card mb-3">
+                <img id="Cory Leonardo" class="card-img-top" src="img/coryLeonardo.jpeg" alt="Cory Leonardo">
+                <div class="card-body">
+                    <h4 class="card-title">Cory Leonardo</h4>
+                    <p class="card-text"> Owner & DJ</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+
+            <div class="card mb-3">
+                <img class="card-img-top" src="img/freddieCowgill.jpeg" alt="Card image cap">
+                <div class="card-body">
+                    <h4 class="card-title">Freddie Cowgill</h4>
+                    <p class="card-text">DJ/ DJ Assistant & Warehouse Crew</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+
+
+            <div class="card mb-3">
+                <img class="card-img-top" src="img/jasonHeil.jpeg" alt="Jason Heil">
+                <div class="card-body">
+                    <h4 class="card-title">Jason Heil</h4>
+                    <p class="card-text">DJ/ DJ Assistant.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-12">
+
+
+            <!-- end of DJs and Crew Slot -->
+
+            <!-- Make an appointment with us! :)  -->
+            <h1 id="schedule" class="display-4 text-center my-5 text-muted">Schedule a time to see us!</h1>
+            <p class="text-center">We are open Monday-Friday, and are generally flexible with any scheudle. Call or click to make an appointment!</p>
+
+
+
+            <!-- This is where the appointment info slot ends.  -->
+
+
+            <!-- Here is where future brides or grooms will click to registar  -->
+
+            <button id="registar" type="button" class="btn btn-outline-dark button-lg d-block mx-auto my-5" data-toggle="modal" data-target="#register" data-toggle="modal" data-target="#register">Don't Miss Out, Registar Now!</button>
+
+
+            <!-- This is where the registar button ends  -->
+
+            <!-- This is my blank space :D and ill write your name  -->
+
+
+
+            <!-- This is where my blank space ends  -->
+
+
+
+            <!-- This is where people can upload photos from past events & the Forum to submit said photos   -->
+            <h1 id="eventPictures" class="display-4 text-center my-8 text-muted">Upload photos from past events!</h1>
+
+            <form action="upload.php" class="text-center my-8" method="post" enctype="multipart/form-data">
+                Click to choose file to Upload:
+                <input type="file" name="fileToUpload" id="fileToUpload" class="btn btn-outline-dark button-lg d-block mx-auto my-5">
+                <input type="submit" value="Upload Image" name="submit">
+            </form>
+
+            <!-- This is where the upload photos section ends :D   -->
+
+
+
+            <!-- Form where people will fill out there information to either book an appoinment or save the date! -->
+            <hr>
+            <div class="col-md col-xl-5 ml-auto">
+                <p id="schedule"><strong>Stay up-to-date with all things going on at PartyZone! Productions</strong></p>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Email">
+                    <span class="input-group-btn">
+			        <button class="btn btn-warning" type="button">Sign up for our news letter</button>
+                  </span>
+
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <!-- This is where the sign up form ends. -->
+
+        <!-- Footer -->
+        <div class="col-md-6 col-lg-12">
+
+            <div class="row py-3">
+                <div class="col-md-7">
+                    <div class="container text-left">
+                        <a href="index2.html" class="btn btn-warning btn-info" role="button">Click here to review us</a>
+                    </div>
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://www.louisvilleweddingshows.net/home.html">Louisville Wedding Network</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Event Locations</a>
+                        </li>
+                        <li class="nav-item">
+                </div>
+
+                <div class="col-md text-md-right">
+                    <small>&copy; 2017 PartyZone Productions</small>
+                </div>
+            </div>
+
+
+
+            <!-- /Footer -->
+
+        </div>
+        <!-- /.container -->
+
+
+
+        <!--=====================================
+         FORM MODAL
+        =====================================-->
+
+        <!-- Modal -->
+        <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="register form" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark text-white">
+                        <h5 class="modal-title" id="exampleModalLabel">Save the Date</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <!-- Registration Form -->
+
+                        <form>
+
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <strong>Hurry!</strong> Book online now and get a free Custom First Dance!
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                            </div>
+
+
+                            <h5 class="mb-4">Baisc Info</h5>
+                            <div class="form-group">
+                                <label class="col-form-label" for="name">Name:</label>
+                                <input id="name" type="text" class="form-control" id="formGroupExampleInput">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label" for="email">Email:</label>
+                                <input type="email" class="form-control" id="email">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label" for="job">Event Type:</label>
+                                <select class="custome-select form-control" id="role">
+
+                      <option value="full stack js developer">Wedding</option>
+                      <option value="front end developer">Wedding & Reception</option>
+                      <option value="back end developer">Equipment Rental</option>
+                      <option value="designer">Coperate Event</option>
+                      <option value="student">Other</option>
+                        </div>
+                      </select>
+                            </div>
+
+                            <hr class="mb-4">
+                            <button type="submit" class="btn btn-warning btn-lg">Register</button>
+
+                        </form>
+
+                        <!-- /Registration Form  -->
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Optional JavaScript -->
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+            <script>
+                $("#homebutton").click(function() {
+                    console.log("click");
+                    $('html, body').animate({
+                        scrollTop: $("#my-jumbotron").offset().top
+                    }, 2000);
+                });
+
+                $("#aboutbutton").click(function() {
+                    console.log("click");
+                    $('html, body').animate({
+                        scrollTop: $("#about").offset().top
+                    }, 2000);
+                });
+
+                $("#crewbutton").click(function() {
+                    console.log("click");
+                    $('html, body').animate({
+                        scrollTop: $("#crew").offset().top
+                    }, 2000);
+                });
+
+                $("#schedulebutton").click(function() {
+                    console.log("click");
+                    $('html, body').animate({
+                        scrollTop: $("#schedule").offset().top
+                    }, 2000);
+                });
+
+                $("#eventPictures").click(function() {
+                    console.log("click");
+                    $('html, body').animate({
+                        scrollTop: $("#eventPictures").offset().top
+                    }, 2000);
+                });
+            </script>
+</body>
+
+</html>
 
 </body>
 

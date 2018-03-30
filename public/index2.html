@@ -1,0 +1,126 @@
+<html>
+
+<head>
+    <title>PartyZone! Productions</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/custom.css">
+
+
+
+</head>
+
+<body>
+
+    <!-- This is where the navbar starts.  -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+
+
+        <div id="NavBar" class="container">
+            <a class="navbar-brand order-1 mr-0 text-warning" href="http://www.pzpentertainment.com" target="_blank">Reimagined By Party Zone! Productions</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a id="homebutton" class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="aboutbutton" class="nav-link" href="index.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="crewbutton" class="nav-link" href="index.html">Crew</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="schedulebutton" class="schedule nav-link" href="index.html">Schedule</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="eventPicturesbutton" class="nav-link" href="index.html">Event Pictures</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- this is where the navbar ends.  -->
+
+    <!-- This is where the main PartyZone! Logo will go  -->
+
+    <div class="jumbotron jumbotron-fluid bg-info text-white">
+        <div id="my-jumbotron" class="container text-sm-center pt-5">
+            <h1 class="display-1 text-warning">PartyZone! Productions Reviews</h1>
+        </div>
+    </div>
+
+    <!-- Jumbotron ends  -->
+
+    <!-- This is where the form begins -->
+
+    <div class="container">
+        <h1>Reviews! (New posts are added to the bottom)</h1>
+        <div id="list-container"></div>
+        <button id="add-file-button" class="btn btn-primary" onclick="toggleAddFileForm()">Add File</button>
+        <div id="form-container" class="panel hidden">
+            <form id="add-file-form">
+                <input type="hidden" id="file-id" value="" />
+                <div class="form-group">
+                    <label for="file-title">Name of your event</label>
+                    <input type="text" class="form-control" id="file-title" placeholder="Title">
+                </div>
+                <div class="form-group">
+                    <label for="file-location">Where was your event?</label>
+                    <input type="text" class="form-control" id="file-location" placeholder="Location">
+                </div>
+                <div class="form-group">
+                    <label for="file-who">Who worked your event?</label>
+                    <input type="text" class="form-control" id="file-who" placeholder="Who">
+                </div>
+                <div class="form-group">
+                    <label for="file-description">Description of event, How did it go?</label>
+                    <input type="text" class="form-control" id="file-description" placeholder="Description">
+                </div>
+                <button type="button" onclick="submitFileForm()" class="btn btn-success">Submit</button>
+                <button type="button" onclick="cancelFileForm()" class="btn btn-link">cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <script id="list-template" type="text/x-handlebars-template">
+        <ul class="list-group">
+            {{#each files}}
+            <li class="list-group-item">
+                <strong>{{title}}</strong> - {{who}} - {{location}} - {{description}}
+                <span class="pull-right">
+            <button type="button" class="btn btn-xs btn-default" onclick="editFileClick('{{_id}}')">Edit</button>
+            <button type="button" class="btn btn-xs btn-danger" onclick="deleteFileClick('{{_id}}')">Del</button>
+          </span>
+            </li>
+            {{/each}}
+        </ul>
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.8/handlebars.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script>
+        $(document).ready(function() {
+            const data = {
+                name: "Guys & Gals"
+            }
+            const greetingTemplate = 'Hello {{name}}! Please take a moment to write about your time with us. Good or bad we welcome all feedback!';
+            const greetingCompiled = Handlebars.compile(greetingTemplate);
+            const greetingRendered = greetingCompiled(data);
+            $('body h1').first().after(greetingRendered);
+            refreshFileList();
+        });
+    </script>
+</body>
+
+</html>

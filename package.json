@@ -1,21 +1,25 @@
 {
-  "name": "install",
-  "version": "1.0.0",
-  "description": "This is the first install for the server for my back end code louisville project",
-  "main": "app.js",
-  "scripts": {
-    "test": "Hello World!"
-  },
-  "repository": {
-    "type": "git",
-    "url": "PZPRevamp3.0"
-  },
-  "keywords": [
-    "PartyZone"
-  ],
-  "author": "Freddie Cowgill IV",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.16.3"
-  }
+    "name": "install",
+    "version": "1.0.0",
+    "description": "This is the first install for the server for my back end code louisville project",
+    "main": "src/server.js",
+    "scripts": {
+        "start": "nodemon src/server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "PZPRevamp3.0"
+    },
+    "keywords": [
+        "PartyZone"
+    ],
+    "author": "Freddie Cowgill IV",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.18.2",
+        "express": "^4.16.3",
+        "mongodb": "^3.0.5",
+        "mongoose": "^5.0.12",
+        "nodemon": "^1.17.2"
+    }
 }
