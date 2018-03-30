@@ -5,10 +5,10 @@
 // src/config/index.js
 
 module.exports = {
-    appName: 'Our Glorious Node Project',
+    appName: 'PZP Fullstack',
     port: 3030,
     db: {
         host: 'localhost',
-        dbName: 'fsjs',
+        dbName: 'pzp',
     }
 };
