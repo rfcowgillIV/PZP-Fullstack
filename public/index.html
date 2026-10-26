@@ -167,6 +167,11 @@
             <!-- This is where people can upload photos from past events & the Forum to submit said photos   -->
             <h1 id="eventPictures" class="display-4 text-center my-8 text-muted">Upload photos from past events!</h1>
 
+            <!-- NOTE (2026): this form posts to "upload.php", which never existed in this Node app,
+                 so uploading has never worked (it returns "Cannot POST /upload.php"). The PHP script
+                 it was copied from (public/php.ini) was removed because it was unsafe and publicly
+                 readable. A real upload feature needs server-side code that checks file type and
+                 size, renames files, and stores them outside the public folder. See SECURITY_UPDATES.md §8. -->
             <form action="upload.php" class="text-center my-8" method="post" enctype="multipart/form-data">
                 Click to choose file to Upload:
                 <input type="file" name="fileToUpload" id="fileToUpload" class="btn btn-outline-dark button-lg d-block mx-auto my-5">

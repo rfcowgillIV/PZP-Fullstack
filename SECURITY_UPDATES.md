@@ -118,6 +118,11 @@ Then open http://localhost:3030 and check that:
 
 ## 8. Not changed / worth knowing
 
+- The **"Upload photos from past events"** form on the home page posts to `upload.php`, which
+  never existed in this Node app, so it has never worked. It was left in place with an
+  explanatory comment. Building real uploads safely means checking file type and size on the
+  server, renaming files, and storing them outside `public/`. Something like the `multer` package
+  plus those checks would be the starting point.
 - `public/dog.pug` is an unused older copy of the home page (there's no Pug engine set up), so
   it was left alone. It's safe to delete.
 - The external links to `pzpentertainment.com` and `louisvilleweddingshows.net` still use
