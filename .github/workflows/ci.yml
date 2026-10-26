@@ -1,0 +1,73 @@
+# Automated tests (added October 2026)
+#
+# Every push and pull request to master runs on GitHub's servers:
+#   1. installs Node.js and the packages in package.json
+#   2. checks the packages for known vulnerabilities (npm audit)
+#   3. checks the integrity hashes on the CDN scripts still match the real files
+#   4. starts the real server with a real MongoDB database
+#   5. exercises the pages and the review API: list, add, edit and delete,
+#      including making sure edit/delete are REJECTED without the admin token
+# A red X on a pull request means something failed - click "Details" to see what.
+# Let's get this party started (and tested).
+name: CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      mongodb:
+        image: mongo:7
+        ports:
+          - 27017:27017
+
+    env:
+      MONGODB_URI: mongodb://127.0.0.1:27017/pzp_ci
+      ADMIN_TOKEN: ci-test-token
+      PORT: 3030
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install packages
+        run: npm install --no-fund
+
+      - name: Show resolved package-lock.json
+        run: cat package-lock.json
+
+      - name: Check packages for known vulnerabilities
+        run: npm audit --omit=dev --audit-level=moderate
+
+      - name: Check CDN integrity hashes
+        run: bash .github/scripts/check-sri.sh public/index.html public/review-us.html
+
+      - name: Start server
+        run: |
+          node src/server.js > server.log 2>&1 &
+          for i in $(seq 1 30); do
+            curl -fs http://127.0.0.1:3030/ > /dev/null && exit 0
+            sleep 1
+          done
+          echo "Server did not start:"; cat server.log; exit 1
+
+      - name: Test pages and review API
+        run: bash .github/scripts/api-test.sh http://127.0.0.1:3030
+
+      - name: Server log
+        if: always()
+        run: cat server.log || true
