@@ -130,3 +130,8 @@ Then open http://localhost:3030 and check that:
 - This update couldn't be run end to end because the build environment had no npm access. Every
   JavaScript file passes a Node syntax check, and the checklist above covers what to test after
   `npm install`.
+
+## Ongoing protection (added later in October 2026)
+
+- **`SECURITY.md`** tells people how to report a security problem privately instead of in a public issue. For the "Report a vulnerability" button to appear, turn on **Settings → Code security → Private vulnerability reporting**.
+- **CodeQL code scanning** (`.github/workflows/codeql.yml`): GitHub's free scanner checks the code for security bugs on every push and pull request to `master`, and weekly. Results appear under **Security → Code scanning**. Dependabot also keeps the workflow's own tools updated.
