@@ -36,9 +36,13 @@ Step #5
 
 Run the code 
 
-nodemon 
+npm run dev
 
     - this will begin the app server processing on the machine and will host the site locally on http://localhost:3030
+    - (2026 update) to be able to EDIT or DELETE reviews, start it with an admin token instead:
+          ADMIN_TOKEN="pick-a-long-secret" npm run dev
+      Without ADMIN_TOKEN, visitors can still read and post reviews, but nobody can edit/delete them.
+    - see SECURITY_UPDATES.md for everything that changed in the 2026 security update
 
 
 Step #6
