@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -7,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="/styles/custom.css">
 
 
@@ -22,7 +23,7 @@
 
 
         <div id="NavBar" class="container">
-            <a class="navbar-brand order-1 mr-0 text-warning" href="http://www.pzpentertainment.com" target="_blank">Reimagined By Party Zone! Productions</a>
+            <a class="navbar-brand order-1 mr-0 text-warning" href="http://www.pzpentertainment.com" target="_blank" rel="noopener noreferrer">Reimagined By Party Zone! Productions</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -44,7 +45,7 @@
                         <a id="eventPicturesbutton" class="nav-link" href="index.html#eventPictures">Event Pictures</a>
                     </li>
                     <li class="nav-item">
-                        <a id="eventPicturesbutton" class="nav-link" href="review-us.html">Review Us</a>
+                        <a id="reviewbutton" class="nav-link" href="review-us.html">Review Us</a>
                     </li>
                 </ul>
             </div>
@@ -68,64 +69,60 @@
 
     <div class="container">
         <h1>Reviews! (New posts are added to the bottom)</h1>
-        <div id="list-container"></div>
-        <!-- <button id="add-file-button" class="btn btn-primary" onclick="toggleAddFileForm()">Add File</button> -->
-        <div id="form-container" class="panel hidden">
-            <form id="add-file-form">
+        <!-- The greeting used to be built with Handlebars in an inline script; it's
+             plain HTML now (same words, zero JavaScript required). -->
+        <p class="lead">Hello Guys &amp; Gals! Please take a moment to write about your time with us. Good or bad we welcome all feedback!</p>
+        <!-- BUG FIX (2026): reviews are drawn by /js/app.js with safe DOM code
+             (textContent), so a review containing <script> shows up as text instead
+             of running. -->
+        <ul id="list-container" class="list-group mb-4"></ul>
+
+        <!-- BUG FIX (2026): this form used class="panel hidden", but neither class
+             exists in Bootstrap 4, so the show/hide code silently did nothing. It's a
+             Bootstrap 4 card now, and app.js toggles the real "d-none" class. -->
+        <div id="form-container" class="card card-body mb-5">
+            <h2 id="form-heading" class="h4">Leave a review</h2>
+            <form id="add-file-form" novalidate>
                 <input type="hidden" id="file-id" value="" />
                 <div class="form-group">
                     <label for="file-title">Name of your event</label>
-                    <input type="text" class="form-control" id="file-title" placeholder="Title">
+                    <input type="text" class="form-control" id="file-title" placeholder="Title" maxlength="120" required>
                 </div>
                 <div class="form-group">
                     <label for="file-location">Where was your event?</label>
-                    <input type="text" class="form-control" id="file-location" placeholder="Location">
+                    <input type="text" class="form-control" id="file-location" placeholder="Location" maxlength="120">
                 </div>
                 <div class="form-group">
                     <label for="file-who">Who worked your event?</label>
-                    <input type="text" class="form-control" id="file-who" placeholder="Who">
+                    <input type="text" class="form-control" id="file-who" placeholder="Who" maxlength="120">
                 </div>
                 <div class="form-group">
                     <label for="file-description">Description of event, How did it go?</label>
-                    <input type="text" class="form-control" id="file-description" placeholder="Description">
+                    <textarea class="form-control" id="file-description" placeholder="Description" maxlength="2000" rows="3"></textarea>
                 </div>
-                <button type="button" onclick="submitFileForm()" class="btn btn-success">Submit</button>
-                <button type="button" onclick="cancelFileForm()" class="btn btn-link">cancel</button>
+                <div id="form-message" class="text-danger mb-2" role="alert"></div>
+                <!-- onclick="" attributes were replaced with listeners in app.js so the
+                     security policy can forbid inline JavaScript entirely. -->
+                <button type="submit" id="submit-button" class="btn btn-success">Submit</button>
+                <button type="button" id="cancel-button" class="btn btn-link">cancel</button>
             </form>
         </div>
     </div>
 
-    <script id="list-template" type="text/x-handlebars-template">
-        <ul class="list-group">
-            {{#each files}}
-            <li class="list-group-item">
-                <strong>{{title}}</strong> - {{who}} - {{location}} - {{description}}
-                <span class="pull-right">
-            <button type="button" class="btn btn-xs btn-default" onclick="editFileClick('{{_id}}')">Edit</button>
-            <button type="button" class="btn btn-xs btn-danger" onclick="deleteFileClick('{{_id}}')">Del</button>
-          </span>
-            </li>
-            {{/each}}
-        </ul>
-    </script>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.8/handlebars.min.js"></script>
+    <!-- SECURITY UPDATE (2026): jQuery 3.3.1 -> 3.7.1, Popper 1.12.9 -> 1.16.1 and
+         Bootstrap 4.0.0 -> 4.6.2. The old versions had known cross-site scripting (XSS)
+         bugs (jQuery CVE-2019-11358 / CVE-2020-11022 / CVE-2020-11023, Bootstrap
+         CVE-2018-14040/14041/14042 / CVE-2019-8331). The "integrity" hashes make the
+         browser refuse the file if the CDN copy is ever tampered with. -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js" integrity="sha384-1H217gwSVyLSIfaLxHbE7dRb3v4mYCKbpQvzx0cegeju1MVsGrX5xXxAvs/HgeFs" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+    <!-- SECURITY UPDATE (2026): Handlebars 4.0.8 was removed. That version had
+         prototype-pollution / remote-code-execution bugs (CVE-2019-19919,
+         CVE-2021-23369, CVE-2021-23383), and runtime template compiling needs
+         eval(), which our new Content-Security-Policy blocks. app.js builds the
+         list with plain DOM code instead. One less library = one less thing to patch. -->
     <script src="/js/app.js"></script>
-    <script>
-        $(document).ready(function() {
-            const data = {
-                name: "Guys & Gals"
-            }
-            const greetingTemplate = 'Hello {{name}}! Please take a moment to write about your time with us. Good or bad we welcome all feedback!';
-            const greetingCompiled = Handlebars.compile(greetingTemplate);
-            const greetingRendered = greetingCompiled(data);
-            $('body h1').first().after(greetingRendered);
-            refreshFileList();
-        });
-    </script>
 </body>
 
 </html>

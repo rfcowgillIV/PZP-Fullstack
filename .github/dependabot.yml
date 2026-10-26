@@ -1,0 +1,16 @@
+# Dependabot keeps this project's libraries up to date (added October 2026).
+# Every week GitHub checks for newer versions of the packages below and opens a
+# pull request for each update, so security fixes don't pile up for years again.
+# Review the pull request, run the tests, and merge. Fresh updates, delivered weekly!
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+  # Keeps the GitHub Actions used by the CodeQL workflow up to date.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
