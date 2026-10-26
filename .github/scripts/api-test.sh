@@ -35,5 +35,15 @@ check "delete without token blocked"  401 "$(code -X DELETE "$BASE/api/file/$id"
 check "delete with token works"       200 "$(code -X DELETE -H "X-Admin-Token: $TOKEN" "$BASE/api/file/$id")"
 check "deleted review is hidden"      404 "$(code "$BASE/api/file/$id")"
 
+# Rate limiting: the server allows 100 API calls per 15 minutes per visitor.
+# Keep calling until we get "429 Too Many Requests" - it must happen within 110 calls.
+# (Runs last because it uses up this test's allowance.) Too many requests? Not on our watch.
+limited=""
+for i in $(seq 1 110); do
+  c=$(curl -s -o /dev/null -w '%{http_code}' "$BASE/api/file")
+  if [ "$c" = "429" ]; then limited="$i"; break; fi
+done
+if [ -n "$limited" ]; then echo "PASS  rate limiter kicks in (429 after $limited more calls)"; else echo "FAIL  rate limiter never returned 429"; fails=$((fails+1)); fi
+
 echo
 if [ "$fails" -eq 0 ]; then echo "All API checks passed."; else echo "$fails check(s) failed."; exit 1; fi
